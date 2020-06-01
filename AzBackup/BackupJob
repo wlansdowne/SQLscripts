@@ -41,7 +41,7 @@ EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Backup t
 @URL = ''AzURL'',
 @Credential = ''AzCredential'',
 @BackupType = ''FULL'',
-@Compress = ''Y''',
+@Compress = ''Compression''',
         @database_name=N'master',
         @flags=0
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback

@@ -1,6 +1,12 @@
 USE [msdb]
 GO
 
+DECLARE @jobId binary(16);
+SELECT @jobId = job_id FROM msdb.dbo.sysjobs WHERE (name = N'Daily Backup Cleanup (Azure)')
+IF (@jobId IS NOT NULL)
+    EXEC msdb.dbo.sp_delete_job @jobId
+GO
+
 /****** Object:  Job [Daily Backup Cleanup (Azure)]    Script Date: 11/1/2019 6:12:58 PM ******/
 BEGIN TRANSACTION
 DECLARE @ReturnCode INT

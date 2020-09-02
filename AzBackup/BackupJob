@@ -5,6 +5,7 @@ DECLARE @jobId binary(16);
 SELECT @jobId = job_id FROM msdb.dbo.sysjobs WHERE (name = N'DatabaseBackup - All DB's to Azure - FULL')
 IF (@jobId IS NOT NULL)
     EXEC msdb.dbo.sp_delete_job @jobId
+GO
 
 /****** Object:  Job [DatabaseBackup - All DB's to Azure - FULL]    Script Date: 11/1/2019 5:12:17 PM ******/
 BEGIN TRANSACTION
